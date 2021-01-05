@@ -30,7 +30,12 @@ Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('i
 
 
  //Admin
-Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminhome');
+Route::get('/admin',[\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('adminhome')->middleware('auth');
+
+Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
+Route::post('/admin/loginCheck', [HomeController::class, 'loginCheck'])->name('admin_loginCheck');
+Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
