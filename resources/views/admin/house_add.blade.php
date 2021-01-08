@@ -19,7 +19,7 @@
                         <br>
 
                         <form role="form" action="{{route('admin_house_store')}}" method="post"
-                              class="form-horizontal form-label-left">
+                              class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align"> Category
@@ -69,13 +69,13 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Square Meters</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text" name="square_meters">
+                                    <input class="form-control" type="number" name="square_meters">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Room Number</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text" name="room_number">
+                                    <input class="form-control" type="number" name="room_number">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -111,10 +111,18 @@
                                     <input class="form-control" type="text" name="slug">
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input class="form-control" type="file" name="image">
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label class="control-label col-md-3 col-sm-3 label-align">Status</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <select class="form-control select2" name="status">
+                                    <select class="form-control" name="status">
                                         <option>False</option>
                                         <option>True</option>
                                     </select>

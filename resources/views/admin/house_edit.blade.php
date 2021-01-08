@@ -7,7 +7,7 @@
 @section('content')
     <div class="">
         <div class="row">
-            <div class="col-md-6 col-sm-6 center-margin">
+            <div class="col-md-6 col-sm- center-margin">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Edit House</h2>
@@ -19,7 +19,7 @@
                         <br>
 
                         <form role="form" action="{{route('admin_house_update',['id' => $data->id])}}" method="post"
-                              class="form-horizontal form-label-left">
+                              class="form-horizontal form-label-left"enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align"> Category
@@ -28,7 +28,8 @@
                                     <select class="form-control select2" name="category_id">
                                         @foreach($dataList as $rs)
 
-                                            <option value="{{$rs->id}}" @if ($rs->id==$data->category_id) selected="selected" @endif >{{$rs->title}}
+                                            <option value="{{$rs->id}}"
+                                                    @if ($rs->id==$data->category_id) selected="selected" @endif >{{$rs->title}}
                                         @endforeach
                                     </select>
                                 </div>
@@ -43,15 +44,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align">Keywords </label>
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Keywords</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text"value="{{$data->keywords}}" name="keywords">
+                                    <input class="form-control" type="text" value="{{$data->keywords}}" name="keywords">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Description</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text"value="{{$data->description}}" name="description">
+                                    <input class="form-control" type="text" value="{{$data->description}}"
+                                           name="description">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -63,19 +65,21 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Address</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text" value="{{$data->address}}"name="address">
+                                    <input class="form-control" type="text" value="{{$data->address}}" name="address">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Square Meters</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text" value="{{$data->square_meters}}"name="square_meters">
+                                    <input class="form-control" type="text" value="{{$data->square_meters}}"
+                                           name="square_meters">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Room Number</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text"value="{{$data->room_number}}" name="room_number">
+                                    <input class="form-control" type="text" value="{{$data->room_number}}"
+                                           name="room_number">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -98,7 +102,8 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Detail</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <textarea name="detail" id="editor1" rows="10" cols="80">{{$data->detail}}</textarea>
+                                    <textarea name="detail" id="editor1" rows="10"
+                                              cols="80">{{$data->detail}}</textarea>
                                     <script>
                                         // Replace the <textarea id="editor1"> with a CKEditor 4
                                         // instance, using default configuration.
@@ -109,9 +114,20 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Slug</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text"value="{{$data->slug}}" name="slug">
+                                    <input class="form-control" type="text" value="{{$data->slug}}" name="slug">
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input class="form-control" type="file" name="image">
+                                    @if($data->image)
+                                        <img src="{{Storage::url($data->image)}}" height="60">
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label class="control-label col-md-3 col-sm-3 label-align">Status</label>
                                 <div class="col-md-6 col-sm-6 ">

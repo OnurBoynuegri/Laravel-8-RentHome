@@ -7,13 +7,13 @@
 
         <div class="row" style="display: block;">
 
-            <div class="col-md-8 col-sm-8 center-margin  ">
+            <div class="col-md-12 col-sm-12 center-margin  ">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Houses</h2>
-                            <div class="col-md-6 col-sm-6 offset-md-1">
-                                <a href="{{route('admin_house_add')}}" class="btn btn-success">Add House</a>
-                            </div>
+                        <div class="col-md-6 col-sm-6 offset-md-1">
+                            <a href="{{route('admin_house_add')}}" class="btn btn-success">Add House</a>
+                        </div>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -52,15 +52,21 @@
                                     <th scope="row">{{$rs->category_id}}</th>
                                     <td>{{$rs->title}}</td>
                                     <td>{{$rs->price}}</td>
-                                    <td>{{$rs->image}}</td>
+                                    <td>
+                                        @if($rs->image)
+                                            <img src="{{Storage::url($rs->image)}}" height="30">
+                                        @endif
+
+                                    </td>
                                     <td>{{$rs->status}}</td>
                                     <td>
-                                        <a class="btn btn-outline-primary" href="{{route('admin_house_edit',['id' => $rs->id])}}">Edit</a>
+                                        <a class="btn btn-outline-primary"
+                                           href="{{route('admin_house_edit',['id' => $rs->id])}}">Edit</a>
                                     </td>
                                     <td>
                                         <a class="btn btn-outline-danger"
-                                                href="{{route('admin_house_delete',['id' => $rs->id])}}"
-                                                onclick="return confirm('House will Delete! Are you sure?')">Delete
+                                           href="{{route('admin_house_delete',['id' => $rs->id])}}"
+                                           onclick="return confirm('House will Delete! Are you sure?')">Delete
                                         </a>
                                     </td>
                                 </tr>

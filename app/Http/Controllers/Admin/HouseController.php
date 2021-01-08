@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\House;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HouseController extends Controller
 {
@@ -61,6 +62,10 @@ class HouseController extends Controller
         $data->detail = $request->input('detail');
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
+        if ($request->file('image') != null) {
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
+
         $data->save();
         return redirect()->route('admin_house');
     }
@@ -117,6 +122,10 @@ class HouseController extends Controller
         $data->detail = $request->input('detail');
         $data->slug = $request->input('slug');
         $data->status = $request->input('status');
+        if ($request->file('image') != null) {
+            $data->image = Storage::putFile('images', $request->file('image'));
+        }
+
         $data->save();
         return redirect()->route('admin_house');
     }
