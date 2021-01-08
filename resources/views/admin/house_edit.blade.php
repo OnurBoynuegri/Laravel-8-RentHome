@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 
 @section('title', 'Edit House')
+@section('script')
+    <script src="{{asset('assets')}}/admin/js/ckeditor/ckeditor.js"></script>
+@endsection
 @section('content')
     <div class="">
         <div class="row">
@@ -95,7 +98,12 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Detail</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text"value="{{$data->detail}}" name="detail">
+                                    <textarea name="detail" id="editor1" rows="10" cols="80">{{$data->detail}}</textarea>
+                                    <script>
+                                        // Replace the <textarea id="editor1"> with a CKEditor 4
+                                        // instance, using default configuration.
+                                        CKEDITOR.replace('editor1');
+                                    </script>
                                 </div>
                             </div>
                             <div class="form-group row">

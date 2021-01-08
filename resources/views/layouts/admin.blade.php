@@ -29,7 +29,7 @@
     <!-- Custom Theme Style -->
     <link href="{{asset('assets')}}/admin/build/css/custom.min.css" rel="stylesheet">
     @yield('css')
-    @yield('javascript')
+    @yield('script')
 </head>
 <body class="nav-md">
 <div class="container body">
