@@ -34,9 +34,9 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a>
+                    <a href="{{route('admin_house')}}">
                         <i class="fa fa-key"></i>
-                        Products
+                        Houses
                     </a>
                 </li>
             </ul>

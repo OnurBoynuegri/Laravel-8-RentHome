@@ -41,6 +41,16 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('category/delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin_category_delete');
     Route::get('category/show', [\App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('admin_category_show');
 
+    #House
+    Route::prefix('house')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\HouseController::class, 'index'])->name('admin_house');
+        Route::get('/create', [\App\Http\Controllers\Admin\HouseController::class, 'create'])->name('admin_house_add');
+        Route::post('store', [\App\Http\Controllers\Admin\HouseController::class, 'store'])->name('admin_house_store');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\HouseController::class, 'edit'])->name('admin_house_edit');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\HouseController::class, 'update'])->name('admin_house_update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\HouseController::class, 'destroy'])->name('admin_house_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\HouseController::class, 'show'])->name('admin_house_show');
+    });
 
     #Setting
     Route::get('setting', [\App\Http\Controllers\Admin\settingController::class, 'index'])->name('admin_setting');
