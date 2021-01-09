@@ -36,7 +36,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Category ID</th>
+                                <th>Category</th>
                                 <th>Title</th>
                                 <th>Price</th>
                                 <th>Image</th>
@@ -50,7 +50,7 @@
                             @foreach($dataList as $rs)
                                 <tr>
                                     <th scope="row">{{$rs->id}}</th>
-                                    <th scope="row">{{$rs->category_id}}</th>
+                                    <th scope="row">{{$rs->category->title}}</th>
                                     <td>{{$rs->title}}</td>
                                     <td>{{$rs->price}}</td>
                                     <td>
