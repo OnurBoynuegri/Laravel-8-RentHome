@@ -51,7 +51,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('delete/{id}', [\App\Http\Controllers\Admin\HouseController::class, 'destroy'])->name('admin_house_delete');
         Route::get('show', [\App\Http\Controllers\Admin\HouseController::class, 'show'])->name('admin_house_show');
     });
-
+    #House Image Gallery
+    Route::prefix('image')->group(function () {
+        Route::get('/create/{house_id}', [\App\Http\Controllers\Admin\ImageController::class, 'create'])->name('admin_image_add');
+        Route::post('store/{house_id}', [\App\Http\Controllers\Admin\ImageController::class, 'store'])->name('admin_image_store');
+        Route::get('delete/{id}/{house_id}', [\App\Http\Controllers\Admin\ImageController::class, 'destroy'])->name('admin_image_delete');
+        Route::get('show', [\App\Http\Controllers\Admin\ImageController::class, 'show'])->name('admin_image_show');
+    });
     #Setting
     Route::get('setting', [\App\Http\Controllers\Admin\settingController::class, 'index'])->name('admin_setting');
     Route::post('setting/update', [\App\Http\Controllers\Admin\settingController::class, 'update'])->name('admin_setting_update');

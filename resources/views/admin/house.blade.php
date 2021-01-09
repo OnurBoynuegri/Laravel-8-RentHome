@@ -40,6 +40,7 @@
                                 <th>Title</th>
                                 <th>Price</th>
                                 <th>Image</th>
+                                <th>Image Gallery</th>
                                 <th>Status</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -54,9 +55,13 @@
                                     <td>{{$rs->price}}</td>
                                     <td>
                                         @if($rs->image)
-                                            <img src="{{Storage::url($rs->image)}}" height="30">
+                                            <img src="{{Storage::url($rs->image)}}" height="30" alt="">
                                         @endif
 
+                                    </td>
+                                    <td>
+                                        <a href="{{route('admin_image_add',['house_id' => $rs->id])}}" class="btn btn-light"
+                                           onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">Gallery</a>
                                     </td>
                                     <td>{{$rs->status}}</td>
                                     <td>
@@ -66,7 +71,7 @@
                                     <td>
                                         <a class="btn btn-outline-danger"
                                            href="{{route('admin_house_delete',['id' => $rs->id])}}"
-                                           onclick="return confirm('House will Delete! Are you sure?')">Delete
+                                           onclick="return confirm('House will be Deleted! Are you sure?')">Delete
                                         </a>
                                     </td>
                                 </tr>
