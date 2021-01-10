@@ -36,13 +36,12 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="left-sidebar">
-                    <h2>Category</h2>
-                    @include('home._category')
-                </div>
-            </div>
-            <div class="col-sm-9 padding-right">
+
+
+            @include('home._category')
+
+
+
                 @section('content')
                     içerik alanı
                 @show

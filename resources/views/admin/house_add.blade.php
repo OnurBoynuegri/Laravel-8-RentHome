@@ -28,7 +28,7 @@
                                     <select class="form-control select2" name="category_id">
                                         @foreach($dataList as $rs)
 
-                                            <option value="{{$rs->id}}">{{$rs->title}}</option>
+                                            <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</option>
                                         @endforeach
                                     </select>
                                 </div>

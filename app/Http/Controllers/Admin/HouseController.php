@@ -31,7 +31,7 @@ class HouseController extends Controller
     public function create()
     {
         //
-        $dataList = Category::all();
+        $dataList = Category::with('children')->get();
         return view('admin.house_add', ['dataList' => $dataList]);
 
     }
@@ -91,7 +91,7 @@ class HouseController extends Controller
     {
         //
         $data = House::find($id);
-        $dataList = Category::all();
+        $dataList = Category::with('children')->get();
         return view('admin.house_edit', ['data' => $data, 'dataList' => $dataList]);
     }
 

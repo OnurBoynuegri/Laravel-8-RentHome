@@ -19,7 +19,7 @@
                         <br>
 
                         <form role="form" action="{{route('admin_house_update',['id' => $data->id])}}" method="post"
-                              class="form-horizontal form-label-left"enctype="multipart/form-data">
+                              class="form-horizontal form-label-left" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align"> Category
@@ -29,7 +29,9 @@
                                         @foreach($dataList as $rs)
 
                                             <option value="{{$rs->id}}"
-                                                    @if ($rs->id==$data->category_id) selected="selected" @endif >{{$rs->title}}
+                                                    @if ($rs->id==$data->category_id) selected="selected" @endif >
+                                                {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
