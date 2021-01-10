@@ -19,11 +19,13 @@ Route::get('/home2', function () {
 });
 Route::redirect('/anasayfa', '/home')->name('anasayfa');
 
-Route::get('/', function () {
-    return view('home.index',['name'=>'Onur Boynueğri']);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('homepage');
+Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/reference', [HomeController::class, 'reference'])->name('reference');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 //Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->where(['id' => '[0-9]+', 'name' => '[A-Za-z]+']);;//parametre gönderim şekli
 Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('id')->whereAlpha('name')->name('test');//parametre gönderim şekli
@@ -68,7 +70,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');
 Route::post('/admin/loginCheck', [HomeController::class, 'loginCheck'])->name('admin_loginCheck');
-Route::get('/admin/logout', [HomeController::class, 'logout'])->name('admin_logout');
+Route::get('logout', [HomeController::class, 'logout'])->name('logout');
 
 
 

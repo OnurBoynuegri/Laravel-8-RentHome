@@ -31,6 +31,9 @@
 </head><!--/head-->
 
 <body>
+     @php
+     $setting=\App\Http\Controllers\HomeController::getsetting();
+     @endphp
 @include('home._header')
 @include('home._slider')
 <section>

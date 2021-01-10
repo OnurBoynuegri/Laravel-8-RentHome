@@ -1,10 +1,12 @@
 @extends('layouts.home')
-
-@section('title', 'Rent Home')
+@php
+    $setting=\App\Http\Controllers\HomeController::getsetting();
+@endphp
+@section('title', $setting->title)
 @section('description')
-    kiralık ev sitesi
+{{$setting->description}}
 @endsection
-@section('keywords', 'ev,daire,garsoniyer,otel,motel')
+@section('keywords', $setting->keywords)
 
 @section('content')
     <div class="col-sm-9 padding-right">
