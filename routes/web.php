@@ -67,12 +67,17 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 });
 
-//User
+//profile
 Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('myprofile');
 
 });
 
+//User
+Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('userprofile');
+
+});
 
 
 Route::get('/admin/login', [HomeController::class, 'login'])->name('admin_login');

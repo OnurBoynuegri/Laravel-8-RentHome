@@ -36,11 +36,9 @@
 @endphp
 
 @include('home._header')
-<section id="slider"><!--slider-->
     @section('slider')
 
     @show
-</section>
 <section>
     <div class="container">
         @section('breadcrumbs')
