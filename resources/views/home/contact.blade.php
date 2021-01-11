@@ -2,7 +2,7 @@
 @php
     $setting=\App\Http\Controllers\HomeController::getsetting();
 @endphp
-@section('title','About Us - '.$setting->title)
+@section('title','Contact - '.$setting->title)
 @section('description')
 {{$setting->description}}
 @endsection
@@ -11,7 +11,7 @@
 <div class="breadcrumbs">
     <ol class="breadcrumb">
         <li><a href="{{route('home')}}">Home</a></li>
-        <li class="active">About Us</li>
+        <li class="active">Contact</li>
     </ol>
 </div>
 @endsection
@@ -20,6 +20,6 @@
 @endsection
 
 @section('content')
-{!! $setting->aboutus !!}
+{!! $setting->contact !!}
 @endsection
 

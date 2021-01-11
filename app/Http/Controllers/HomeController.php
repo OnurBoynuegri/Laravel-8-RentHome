@@ -24,12 +24,11 @@ class HomeController extends Controller
         return view('home.index', ['setting' => $setting]);
     }
     public function aboutus(){
-
         return view('home.about');
     }
     public function reference(){
 
-        return view('home.about');
+        return view('home.references');
     }
     public function faq(){
 
@@ -37,7 +36,7 @@ class HomeController extends Controller
     }
     public function contact(){
 
-        return view('home.about');
+        return view('home.contact');
     }
 
 
