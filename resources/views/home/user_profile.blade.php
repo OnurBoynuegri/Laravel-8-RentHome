@@ -17,9 +17,13 @@
     </div>
 @endsection
 @section('category')
+    <div class="col-sm-2">
     @include('home.usermenu')
+    </div>
 @endsection
+
+<div class="col-sm-10 padding-right">
 @section('content')
     @include('profile.show')
 @endsection
-
+</div>

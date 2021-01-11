@@ -15,11 +15,12 @@
     </ol>
 </div>
 @endsection
-@section('category')
-    @include('home._category')
-@endsection
 
-@section('content')
-{!! $setting->references !!}
-@endsection
+    @section('content')
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9 padding-left">
+        {!! $setting->references !!}
+        </div>
+    @endsection
+
 

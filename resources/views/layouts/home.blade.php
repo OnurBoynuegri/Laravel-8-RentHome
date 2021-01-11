@@ -45,17 +45,12 @@
         @show
         <div class="row">
 
-            <div class="col-sm-3">
                 @section('category')
-                    category alanı
                 @show
-            </div>
 
-            <div class="col-sm-9 padding-right">
                 @section('content')
                     içerik alanı
                 @show
-            </div>
         </div>
     </div>
     </div>

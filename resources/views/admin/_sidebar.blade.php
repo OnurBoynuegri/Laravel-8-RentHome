@@ -33,10 +33,16 @@
                         Categories
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="{{route('admin_house')}}">
                         <i class="fa fa-key"></i>
                         Houses
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('admin_message')}}">
+                        <i class="fa fa-envelope"></i>
+                        Contact Messages
                     </a>
                 </li>
             </ul>

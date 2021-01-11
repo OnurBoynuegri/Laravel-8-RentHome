@@ -15,9 +15,7 @@
     </ol>
 </div>
 @endsection
-@section('category')
-    @include('home._category')
-@endsection
+
 
 @section('content')
 {!! $setting->aboutus !!}
