@@ -7,19 +7,19 @@
 {{$setting->description}}
 @endsection
 @section('keywords', $setting->keywords)
+
 @section('breadcrumbs')
-<div class="breadcrumbs">
-    <ol class="breadcrumb">
-        <li><a href="{{route('home')}}">Home</a></li>
-        <li class="active">About Us</li>
-    </ol>
-</div>
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+            <li><a href="{{route('home')}}">Home</a></li>
+            <li class="active">User Profile</li>
+        </ol>
+    </div>
 @endsection
 @section('category')
-    @include('home._category')
+    @include('home.usermenu')
 @endsection
-
 @section('content')
-    about us
+    @include('profile.show')
 @endsection
 

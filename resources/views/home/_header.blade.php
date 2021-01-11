@@ -67,7 +67,7 @@
                     <div class="shop-menu pull-right">
                         @auth
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
+                                <li><a href="{{route('myprofile')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
                                 <li><a href="{{route('logout')}}"><i class="fa fa-unlock"></i> Logout</a></li>
                             </ul>
                         @endauth

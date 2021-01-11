@@ -4,12 +4,23 @@
 @endphp
 @section('title', $setting->title)
 @section('description')
-{{$setting->description}}
+    {{$setting->description}}
 @endsection
+
 @section('keywords', $setting->keywords)
 
+
+
+@section('slider')
+    @include('home._slider')
+@endsection
+
+@section('category')
+    @include('home._category')
+@endsection
+
 @section('content')
-    <div class="col-sm-9 padding-right">
+
         <div class="features_items"><!--features_items-->
             <h2 class="title text-center">Features Items</h2>
             <div class="col-sm-4">
@@ -601,6 +612,6 @@
                 </a>
             </div>
         </div><!--/recommended_items-->
-    </div>
+
 @endsection
 

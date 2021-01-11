@@ -31,29 +31,45 @@
 </head><!--/head-->
 
 <body>
-     @php
-     $setting=\App\Http\Controllers\HomeController::getsetting();
-     @endphp
+@php
+    $setting=\App\Http\Controllers\HomeController::getsetting();
+@endphp
+
 @include('home._header')
-@include('home._slider')
+<section id="slider"><!--slider-->
+    @section('slider')
+
+    @show
+</section>
 <section>
     <div class="container">
+        @section('breadcrumbs')
+        @show
         <div class="row">
 
+            <div class="col-sm-3">
+                @section('category')
+                    category alanı
+                @show
+            </div>
 
-            @include('home._category')
-
-
-
+            <div class="col-sm-9 padding-right">
                 @section('content')
                     içerik alanı
                 @show
             </div>
         </div>
     </div>
+    </div>
 </section>
 @include('home._footer')
 @yield('footerjs')
+<script src="{{asset('assets')}}/js/jquery.js"></script>
+<script src="{{asset('assets')}}/js/bootstrap.min.js"></script>
+<script src="{{asset('assets')}}/js/jquery.scrollUp.min.js"></script>
+<script src="{{asset('assets')}}/js/price-range.js"></script>
+<script src="{{asset('assets')}}/js/jquery.prettyPhoto.js"></script>
+<script src="{{asset('assets')}}/js/main.js"></script>
 
 </body>
 </html>

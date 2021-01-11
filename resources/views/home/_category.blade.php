@@ -2,7 +2,7 @@
     $parentCategories=\App\Http\Controllers\HomeController::categorylist()
 @endphp
 <!--category-products-->
-<div class="col-sm-3">
+
     <div class="left-sidebar">
         <h2>Category</h2>
         <div class="panel-group category-products">
@@ -27,7 +27,5 @@
                 </div>
             @endforeach
         </div>
-
         <!--/category-products-->
     </div>
-</div>
