@@ -11,7 +11,7 @@
     <div class="breadcrumbs">
         <ol class="breadcrumb">
             <li><a href="{{route('home')}}">Home</a></li>
-            <li class="active">Blank</li>
+            <li class="active">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($data,$data->title)}} </li>
         </ol>
     </div>
 @endsection

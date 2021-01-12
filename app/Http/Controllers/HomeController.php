@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\House;
+use App\Models\Image;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -43,8 +44,10 @@ class HomeController extends Controller
     public function house($id,$slug)
     {
         $data=House::find($id);
-        print_r($data);
-        exit();
+        $datalist=Image::where('house_id',$id)->get();
+        #print_r($data);
+        #exit();
+        return view('home.house_detail',['datalist'=>$datalist,'data'=>$data]);
     }
     public function categoryhouses($id,$slug)
     {

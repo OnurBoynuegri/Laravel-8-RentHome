@@ -7,7 +7,7 @@
                 @include('categorytree',['children'=>$rs->children])
             </ul>
         @else
-            <li><a href="{{route('categoryhouses',['id'=>$subcategory->id,'slug'=>$subcategory->title,])}}">{{$subcategory->title}}</a></li>
+            <li><a href="{{route('categoryhouses',['id'=>$subcategory->id,'slug'=>$subcategory->slug,])}}">{{$subcategory->title}}</a></li>
         @endif
     </ul>
 
