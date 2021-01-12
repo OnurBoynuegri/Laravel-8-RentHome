@@ -9,7 +9,7 @@
                                 <div class="col-sm-5">
                                     <h1><span>{{$rs->price}}TL</span></h1>
                                     <h2>{{$rs->title}}</h2>
-                                    <a type="button" class="btn btn-default get" href="{{route('house',['id'=>$rs->id,'slug'=>$rs->slug])}}">Get it now</a>
+                                    <a type="button" class="btn btn-default get" href="{{route('house',['id'=>$rs->id,'slug'=>$rs->slug])}}">Detail</a>
                                 </div>
                                 <div class="col-sm-7">
                                     <img src="{{Storage::url($rs->image)}}" class="girl img-responsive"

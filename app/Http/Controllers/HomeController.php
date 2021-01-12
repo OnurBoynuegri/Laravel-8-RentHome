@@ -42,6 +42,14 @@ class HomeController extends Controller
         print_r($data);
         exit();
     }
+    public function categoryhouses($id,$slug)
+    {
+        $datalist=House::where('category_id',$id)->get();
+        $data=Category::find($id);
+        #print_r($data);
+        #exit();
+        return view('home.category_houses',['datalist'=>$datalist,'data'=>$data]);
+    }
 
     public function aboutus()
     {
