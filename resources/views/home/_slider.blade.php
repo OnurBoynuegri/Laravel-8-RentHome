@@ -11,9 +11,9 @@
                                     <h2>{{$rs->title}}</h2>
                                     <a type="button" class="btn btn-default get" href="{{route('house',['id'=>$rs->id,'slug'=>$rs->slug])}}">Detail</a>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-6">
                                     <img src="{{Storage::url($rs->image)}}" class="girl img-responsive"
-                                         alt="" style="width: 700px; height: 300px;">
+                                         alt="" style="width: 100%; height: 300px;">
                                 </div>
                             </div>
                         @endforeach
