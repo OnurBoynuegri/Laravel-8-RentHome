@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\House;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -25,7 +26,21 @@ class HomeController extends Controller
     {
 
         $setting = Setting::first();
-        return view('home.index', ['setting' => $setting]);
+        $slider= House::select('id','title','image','price','slug')-> limit(4)->get();
+        #print_r($slider);
+        #exit();
+        $data=[
+            'setting'=>$setting,
+            'slider'=>$slider,
+        ];
+        return view('home.index',$data);
+    }
+
+    public function house($id,$slug)
+    {
+        $data=House::find($id);
+        print_r($data);
+        exit();
     }
 
     public function aboutus()
