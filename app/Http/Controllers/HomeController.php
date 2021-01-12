@@ -27,11 +27,15 @@ class HomeController extends Controller
 
         $setting = Setting::first();
         $slider= House::select('id','title','image','price','slug')-> limit(4)->get();
+        $random= House::select('id','title','image','price','slug')-> limit(9)->inRandomOrder()->get();
+        $last= House::select('id','title','image','price','slug')->orderByDesc('id')->get();
         #print_r($slider);
         #exit();
         $data=[
             'setting'=>$setting,
             'slider'=>$slider,
+            'last'=>$last,
+            'random'=>$random,
         ];
         return view('home.index',$data);
     }
