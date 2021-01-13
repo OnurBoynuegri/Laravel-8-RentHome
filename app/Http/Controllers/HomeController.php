@@ -27,35 +27,57 @@ class HomeController extends Controller
     {
 
         $setting = Setting::first();
-        $slider= House::select('id','title','image','price','slug')-> limit(4)->get();
-        $random= House::select('id','title','image','price','slug')-> limit(9)->inRandomOrder()->get();
-        $last= House::select('id','title','image','price','slug')->orderByDesc('id')->get();
+        $slider = House::select('id', 'title', 'image', 'price', 'slug')->limit(4)->get();
+        $random = House::select('id', 'title', 'image', 'price', 'slug')->limit(9)->inRandomOrder()->get();
+        $last = House::select('id', 'title', 'image', 'price', 'slug')->orderByDesc('id')->get();
         #print_r($slider);
         #exit();
-        $data=[
-            'setting'=>$setting,
-            'slider'=>$slider,
-            'last'=>$last,
-            'random'=>$random,
+        $data = [
+            'setting' => $setting,
+            'slider' => $slider,
+            'last' => $last,
+            'random' => $random,
         ];
-        return view('home.index',$data);
+        return view('home.index', $data);
     }
 
-    public function house($id,$slug)
+    public function house($id, $slug)
     {
-        $data=House::find($id);
-        $datalist=Image::where('house_id',$id)->get();
+        $data = House::find($id);
+        $datalist = Image::where('house_id', $id)->get();
         #print_r($data);
         #exit();
-        return view('home.house_detail',['datalist'=>$datalist,'data'=>$data]);
+        return view('home.house_detail', ['datalist' => $datalist, 'data' => $data]);
     }
-    public function categoryhouses($id,$slug)
+
+    public function gethouse(Request $request)
     {
-        $datalist=House::where('category_id',$id)->get();
-        $data=Category::find($id);
+        $search = $request->input('search');
+        $count = House::where('title', 'like', '%' . $search . '%')->get()->count();
+        if ($count == 1) {
+            $data = House::where('title', 'like', '%' . $search . '%')->first();
+            return redirect()->route('house', ['id' => $data->id, 'slug' => $data->slug]);
+        } else {
+            return redirect()->route('houselist', ['search' => $search]);
+        }
+    }
+
+    public function houselist($search)
+    {
+        $datalist = House::where('title', 'like', '%' . $search . '%')->get();
+
+        $data = House::where('title', 'like', '%' . $search . '%')->first();
+        return view('home.search_houses', ['search' => $search, 'datalist' => $datalist]);
+
+    }
+
+    public function categoryhouses($id, $slug)
+    {
+        $datalist = House::where('category_id', $id)->get();
+        $data = Category::find($id);
         #print_r($data);
         #exit();
-        return view('home.category_houses',['datalist'=>$datalist,'data'=>$data]);
+        return view('home.category_houses', ['datalist' => $datalist, 'data' => $data]);
     }
 
     public function aboutus()
@@ -91,7 +113,7 @@ class HomeController extends Controller
         $data->message = $request->input('message');
 
         $data->save();
-        return redirect()->route('contact')->with('success','Mesajınız Kaydedilmiştir. Teşekkür Ederiz.');
+        return redirect()->route('contact')->with('success', 'Mesajınız Kaydedilmiştir. Teşekkür Ederiz.');
     }
 
 

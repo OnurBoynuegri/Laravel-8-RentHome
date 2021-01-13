@@ -67,15 +67,16 @@
                     <div class="shop-menu pull-right">
                         @auth
                             <ul class="nav navbar-nav">
-                                <li><a href="{{route('myprofile')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
+                                <li><a href="{{route('myprofile')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}
+                                    </a></li>
                                 <li><a href="{{route('logout')}}"><i class="fa fa-unlock"></i> Logout</a></li>
                             </ul>
                         @endauth
                         @guest
-                                <ul class="nav navbar-nav">
-                                    <li><a href="/login"><i class="fa fa-lock"></i> login</a></li>
-                                    <li><a href="/register"><i class="fa fa-sign-in"></i> signin</a></li>
-                                </ul>
+                            <ul class="nav navbar-nav">
+                                <li><a href="/login"><i class="fa fa-lock"></i> login</a></li>
+                                <li><a href="/register"><i class="fa fa-sign-in"></i> signin</a></li>
+                            </ul>
                         @endguest
                     </div>
                 </div>
@@ -108,7 +109,11 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search">
+                        <form action="{{route('gethouse')}}" method="post">
+                            @csrf
+                            @livewire('search')
+                        </form>
+                        @livewireScripts
                     </div>
                 </div>
             </div>
