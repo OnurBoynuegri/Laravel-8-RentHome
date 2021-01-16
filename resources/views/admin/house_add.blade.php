@@ -115,7 +115,7 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="file" name="image">
+                                    <input class="form-control" type="file" name="image" style="overflow: hidden;">
                                 </div>
                             </div>
 

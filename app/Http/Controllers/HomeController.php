@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\House;
 use App\Models\Image;
 use App\Models\Message;
@@ -93,8 +94,8 @@ class HomeController extends Controller
 
     public function faq()
     {
-
-        return view('home.about');
+        $datalist = Faq::all()->sortBy('position');
+        return view('home.faq', ['datalist' => $datalist]);
     }
 
     public function contact()

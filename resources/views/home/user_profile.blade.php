@@ -22,8 +22,10 @@
     </div>
 @endsection
 
-<div class="col-sm-10 padding-right">
+
 @section('content')
+    <div class="col-sm-10 padding-right">
     @include('profile.show')
+    </div>
 @endsection
-</div>
+

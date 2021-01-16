@@ -26,6 +26,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72"
           href="{{asset('assets')}}/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="{{asset('assets')}}/images/ico/apple-touch-icon-57-precomposed.png">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     @yield('css')
     @yield('headerjs')
 </head><!--/head-->
@@ -57,7 +58,6 @@
 </section>
 @include('home._footer')
 @yield('footerjs')
-<script src="{{asset('assets')}}/js/jquery.js"></script>
 <script src="{{asset('assets')}}/js/bootstrap.min.js"></script>
 <script src="{{asset('assets')}}/js/jquery.scrollUp.min.js"></script>
 <script src="{{asset('assets')}}/js/price-range.js"></script>

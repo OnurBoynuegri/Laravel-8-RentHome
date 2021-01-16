@@ -45,6 +45,12 @@
                         Contact Messages
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('admin_faq')}}">
+                        <i class="fa fa-question-circle"></i>
+                        FAQ
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="menu_section">
