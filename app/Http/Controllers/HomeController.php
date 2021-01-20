@@ -28,9 +28,9 @@ class HomeController extends Controller
     {
 
         $setting = Setting::first();
-        $slider = House::select('id', 'title', 'image', 'price', 'slug')->limit(4)->get();
-        $random = House::select('id', 'title', 'image', 'price', 'slug')->limit(9)->inRandomOrder()->get();
-        $last = House::select('id', 'title', 'image', 'price', 'slug')->orderByDesc('id')->get();
+        $slider = House::select('id', 'title', 'image', 'price', 'slug')->where('status', '!=', 'False')->limit(4)->get();
+        $random = House::select('id', 'title', 'image', 'price', 'slug')->where('status', '!=', 'False')->limit(9)->inRandomOrder()->get();
+        $last = House::select('id', 'title', 'image', 'price', 'slug')->where('status', '!=', 'False')->orderByDesc('id')->get();
         #print_r($slider);
         #exit();
         $data = [
@@ -54,9 +54,9 @@ class HomeController extends Controller
     public function gethouse(Request $request)
     {
         $search = $request->input('search');
-        $count = House::where('title', 'like', '%' . $search . '%')->get()->count();
+        $count = House::where('title', 'like', '%' . $search . '%')->where('status', '!=', 'False')->get()->count();
         if ($count == 1) {
-            $data = House::where('title', 'like', '%' . $search . '%')->first();
+            $data = House::where('title', 'like', '%' . $search . '%')->where('status', '!=', 'False')->first();
             return redirect()->route('house', ['id' => $data->id, 'slug' => $data->slug]);
         } else {
             return redirect()->route('houselist', ['search' => $search]);
@@ -65,7 +65,7 @@ class HomeController extends Controller
 
     public function houselist($search)
     {
-        $datalist = House::where('title', 'like', '%' . $search . '%')->get();
+        $datalist = House::where('title', 'like', '%' . $search . '%')->where('status', '!=', 'False')->get();
 
         $data = House::where('title', 'like', '%' . $search . '%')->first();
         return view('home.search_houses', ['search' => $search, 'datalist' => $datalist]);
@@ -74,7 +74,7 @@ class HomeController extends Controller
 
     public function categoryhouses($id, $slug)
     {
-        $datalist = House::where('category_id', $id)->get();
+        $datalist = House::where('category_id', $id)->where('status', '!=', 'False')->get();
         $data = Category::find($id);
         #print_r($data);
         #exit();

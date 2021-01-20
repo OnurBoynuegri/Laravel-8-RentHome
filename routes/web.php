@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HouseController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -104,6 +106,24 @@ Route::middleware('auth')->prefix('myaccount')->namespace('myaccount')->group(fu
 //User
 Route::middleware('auth')->prefix('user')->namespace('user')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('userprofile');
+
+    #House
+    Route::prefix('house')->group(function () {
+        Route::get('/', [HouseController::class, 'index'])->name('user_house');
+        Route::get('/create', [HouseController::class, 'create'])->name('user_house_add');
+        Route::post('store', [HouseController::class, 'store'])->name('user_house_store');
+        Route::get('edit/{id}', [HouseController::class, 'edit'])->name('user_house_edit');
+        Route::post('update/{id}', [HouseController::class, 'update'])->name('user_house_update');
+        Route::get('delete/{id}', [HouseController::class, 'destroy'])->name('user_house_delete');
+        Route::get('show', [HouseController::class, 'show'])->name('user_house_show');
+    });
+    #House Image Gallery
+    Route::prefix('image')->group(function () {
+        Route::get('/create/{house_id}', [ImageController::class, 'create'])->name('user_image_add');
+        Route::post('store/{house_id}', [ImageController::class, 'store'])->name('user_image_store');
+        Route::get('delete/{id}/{house_id}', [ImageController::class, 'destroy'])->name('user_image_delete');
+        Route::get('show', [ImageController::class, 'show'])->name('house_image_show');
+    });
 
 });
 

@@ -21,6 +21,8 @@
 @endsection
 
 @section('content')
+    <div class="col-sm-9 padding-left">
     blank
+    </div>
 @endsection
 

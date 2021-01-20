@@ -18,6 +18,8 @@
 
 
 @section('content')
+    <div class="col-sm-9 padding-left">
 {!! $setting->aboutus !!}
+    </div>
 @endsection
 
