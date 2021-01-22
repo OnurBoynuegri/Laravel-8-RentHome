@@ -66,7 +66,7 @@ class HouseController extends Controller
         }
 
         $data->save();
-        return redirect()->route('user_house')->with('success', 'House Created Successfully');;
+        return redirect()->route('user_house')->with('success', 'House Created Successfully');
     }
 
     /**

@@ -74,7 +74,7 @@
                         @endauth
                         @guest
                             <ul class="nav navbar-nav">
-                                <li><a href="/login"><i class="fa fa-lock"></i> login</a></li>
+                                <li><a href="{{route('admin_login')}}"><i class="fa fa-lock"></i> login</a></li>
                                 <li><a href="/register"><i class="fa fa-sign-in"></i> signin</a></li>
                             </ul>
                         @endguest

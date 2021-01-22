@@ -30,6 +30,7 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
+                @include('home.message')
                 <form action="{{route('admin_loginCheck')}}" method="post">
                     @csrf
                     <h1>Login Form</h1>
@@ -49,7 +50,7 @@
 
                     <div class="separator">
                         <p class="change_link">New to site?
-                            <a href="#signup" class="to_register"> Create Account </a>
+                            <a href="/register" class="to_register"> Create Account </a>
                         </p>
 
                         <div class="clearfix"></div>
@@ -79,7 +80,7 @@
                     <div class="clearfix"></div>
 
                     <div class="separator">
-                        <p class="change_link">Already a member ?
+                        <p class="change_link">
                             <a href="#signin" class="to_register"> Log in </a>
                         </p>
 

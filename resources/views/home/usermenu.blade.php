@@ -16,6 +16,16 @@
                 <h4 class="panel-title"><a href="#">My Messages</a></h4>
             </div>
         </div>
+        @php
+            $userRole=Auth::user()->roles->pluck('name');
+        @endphp
+        @if($userRole->contains('admin'))
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="{{route('admin_home')}}">Admin Panel</a></h4>
+                </div>
+            </div>
+        @endif
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title"><a href="{{route('logout')}}">Logout</a></h4>
