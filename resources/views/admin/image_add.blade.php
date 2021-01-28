@@ -34,7 +34,7 @@
 <body class="nav-md">
             <div class="">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 center-margin">
+                    <div class="col-sm-9 padding-left">
 
                         <div class="x_panel">
                             <div class="x_title">
@@ -61,7 +61,7 @@
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
-                                        <div class="col-md-6 col-sm-6 ">
+                                        <div class="col-md-6 col-sm-6 " style="overflow: hidden;">
                                             <input class="form-control" type="file" name="image">
                                         </div>
                                     </div>

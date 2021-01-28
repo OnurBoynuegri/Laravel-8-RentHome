@@ -36,6 +36,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>user</th>
                                 <th>Category</th>
                                 <th>Title</th>
                                 <th>Price</th>
@@ -51,9 +52,22 @@
                                 <tr>
                                     <th scope="row">{{$rs->id}}</th>
                                     <th scope="row">
+                                        <a href="{{route('admin_user_show',['id'=>$rs->user_id])}}"
+                                           onclick="return !window.open(this.href, '','top=50 left=100 width=800,height=600')">
+                                            {{$rs->user->name}}
+                                        </a>
+
+                                    </th>
+                                    <th scope="row">
                                         {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category,$rs->category->title)}}
                                     </th>
-                                    <td>{{$rs->title}}</td>
+                                    <td>
+                                        <a href="{{route('house',['id'=>$rs->id,'slug'=>$rs->slug])}}"
+                                           onclick="return !window.open(this.href, '','top=50 left=100 width=800,height=600')">
+                                            {{$rs->title}}
+                                        </a>
+                                    </td>
+
                                     <td>{{$rs->price}}</td>
                                     <td>
                                         @if($rs->image)
@@ -62,7 +76,8 @@
 
                                     </td>
                                     <td>
-                                        <a href="{{route('admin_image_add',['house_id' => $rs->id])}}" class="btn btn-light"
+                                        <a href="{{route('admin_image_add',['house_id' => $rs->id])}}"
+                                           class="btn btn-light"
                                            onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">Gallery</a>
                                     </td>
                                     <td>{{$rs->status}}</td>

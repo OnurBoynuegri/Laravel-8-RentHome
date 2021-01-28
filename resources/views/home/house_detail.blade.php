@@ -56,6 +56,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#features" data-toggle="tab">Features</a></li>
                     <li><a href="#details" data-toggle="tab">Details</a></li>
+                    <li><a href="#userDetails" data-toggle="tab">İlan Sahibi</a></li>
                 </ul>
             </div>
             <div class="tab-content">
@@ -78,6 +79,17 @@
 
                 <div class="tab-pane fade" id="details">
                     <p>{!!  $data->detail!!}</p>
+                </div>
+                <div class="tab-pane fade" id="userDetails">
+                    <div class="col-sm-12">
+                        <div class="product-information" style="border: 0px; "><!--/product-information-->
+                            <p><b>Ad Soyad:</b> {{$data->user->name}}</p>
+                            <p><b>Email:</b> {{$data->user->email}}</p>
+                            <p><b>Phone:</b> {{$data->user->phone}}</p>
+
+                        </div><!--/product-information-->
+                    </div>
+
                 </div>
 
             </div>

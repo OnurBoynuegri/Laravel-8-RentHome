@@ -64,4 +64,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function house()
+    {
+        return $this->hasMany(House::class);
+    }
 }

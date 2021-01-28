@@ -133,7 +133,17 @@
                                     <input class="form-control" type="text" value="{{$data->slug}}" name="slug">
                                 </div>
                             </div>
-
+                            @if($userData->contains('admin'))
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select class="form-control" name="status">
+                                            <option>False</option>
+                                            <option>True</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
                                 <div class="col-md-6 col-sm-6 ">
@@ -143,6 +153,7 @@
                                     @endif
                                 </div>
                             </div>
+
                             <div class="ln_solid"></div>
                             <div class="form-group row">
                                 <div class="col-md-6 col-sm-6 offset-md-5">

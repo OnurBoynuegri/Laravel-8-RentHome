@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\House;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,7 @@ class HouseController extends Controller
     public function index()
     {
         //
+
         $dataList = House::all();
         return view('admin.house', ['dataList' => $dataList]);
     }

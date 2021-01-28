@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\House;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -30,8 +31,9 @@ class HouseController extends Controller
     public function create()
     {
         //
+        $userData = Auth::user()->roles->pluck('name');
         $dataList = Category::where('parent_id', '!=', 0)->with('children')->get();
-        return view('home.user_house_add', ['dataList' => $dataList]);
+        return view('home.user_house_add', ['dataList' => $dataList,'userData' => $userData]);
 
     }
 
@@ -89,9 +91,10 @@ class HouseController extends Controller
     public function edit(House $house, $id)
     {
         //
+        $userData = Auth::user()->roles->pluck('name');
         $data = House::find($id);
         $dataList = Category::where('parent_id', '!=', 0)->with('children')->get();
-        return view('home.user_house_edit', ['data' => $data, 'dataList' => $dataList]);
+        return view('home.user_house_edit', ['userData' => $userData,'data' => $data, 'dataList' => $dataList]);
     }
 
     /**
@@ -119,6 +122,7 @@ class HouseController extends Controller
         $data->stuff = $request->input('stuff');
         $data->dues = (int)$request->input('dues');
         $data->detail = $request->input('detail');
+        $data->status = $request->input('status','False');
         $data->slug = $request->input('slug');
         if ($request->file('image') != null) {
             $data->image = Storage::putFile('images', $request->file('image'));

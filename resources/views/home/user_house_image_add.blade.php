@@ -30,11 +30,11 @@
     @yield('css')
     @yield('headerjs')
 </head><!--/head-->
-<body class="nav-md">
-<div class="">
-    <div class="row">
+<body>
+<section>
+    <div class="container">
+        <div class="row">
         <div class="col-md-12 col-sm-12 center-margin">
-
             <div class="x_panel">
                 <div class="x_title">
                     <h2>{{$data->title}}</h2>
@@ -53,7 +53,7 @@
                             <label class="col-form-label col-md-3 col-sm-3 label-align"> Title
                             </label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input type="text" name="title" class="form-control">
+                                <input type="text" name="title" required="required" class="form-control">
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
                             <div class="col-md-6 col-sm-6 ">
-                                <input class="form-control" type="file" name="image">
+                                <input class="form-control" type="file" required="required" name="image">
                             </div>
                         </div>
 
@@ -79,11 +79,11 @@
 
         <div class="col-md-12 center-margin">
             <div class="row">
-                <div class="col-sm-9 padding-right">
+                <div class="col-sm-12 padding-right">
                     <div class="features_items"><!--features_items-->
 
                         @foreach($images as $rs)
-                            <div class="col-sm-5">
+                            <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
-                                                <h2>id : {{$rs->id}}</h2>
+                                                <h2>Name : {{$rs->title}}</h2>
                                                 <a class="btn btn-outline-danger"
                                                    href="{{route('user_image_delete',['id' => $rs->id,'house_id' => $data->id])}}"
                                                    onclick="return confirm('House will be Deleted! Are you sure?')">
@@ -108,8 +108,9 @@
             </div>
         </div>
     </div>
+    </div>
 </div>
-
+</section>
 <script src="{{asset('assets')}}/js/bootstrap.min.js"></script>
 <script src="{{asset('assets')}}/js/jquery.scrollUp.min.js"></script>
 <script src="{{asset('assets')}}/js/price-range.js"></script>

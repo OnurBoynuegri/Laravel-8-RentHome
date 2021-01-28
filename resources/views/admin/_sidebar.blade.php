@@ -8,8 +8,9 @@
     <!-- menu profile quick info -->
     <div class="profile clearfix">
         <div class="profile_pic">
-
-            <img src="{{asset('assets')}}/admin/images/img.jpg" alt="..." class="img-circle profile_img">
+            @if(Auth::user()->profile_photo_path)
+                <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" class="img-circle profile_img" alt="...">
+            @endif
         </div>
         <div class="profile_info">
             @auth
@@ -28,21 +29,27 @@
             <h3>General</h3>
             <ul class="nav side-menu" style="">
                 <li>
-                    <a href="{{route('admin_category')}}">
-                        <i class="fa fa-edit"></i>
-                        Categories
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('admin_house')}}">
                         <i class="fa fa-key"></i>
                         Houses
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin_category')}}">
+                        <i class="fa fa-edit"></i>
+                        Categories
+                    </a>
+                </li>
+                <li>
                     <a href="{{route('admin_message')}}">
                         <i class="fa fa-envelope"></i>
                         Contact Messages
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('admin_users')}}">
+                        <i class="fa fa-users"></i>
+                        Users
                     </a>
                 </li>
                 <li>
@@ -62,36 +69,6 @@
                         Settings
                     </a>
                 </li>
-                <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="page_403.html">403 Error</a></li>
-                        <li><a href="page_404.html">404 Error</a></li>
-                        <li><a href="page_500.html">500 Error</a></li>
-                        <li><a href="plain_page.html">Plain Page</a></li>
-                        <li><a href="login.html">Login Page</a></li>
-                        <li><a href="pricing_tables.html">Pricing Tables</a></li>
-                    </ul>
-                </li>
-                <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                        <li><a href="#level1_1">Level One</a>
-                        </li>
-                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                                <li class="sub_menu"><a href="level2.html">Level Two</a>
-                                </li>
-                                <li><a href="#level2_1">Level Two</a>
-                                </li>
-                                <li><a href="#level2_2">Level Two</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#level1_2">Level One</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span
-                            class="label label-success pull-right">Coming Soon</span></a></li>
             </ul>
         </div>
 
@@ -100,14 +77,8 @@
 
     <!-- /menu footer buttons -->
     <div class="sidebar-footer hidden-small">
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
+        <a data-toggle="tooltip" data-placement="top" title=""  href="{{route('admin_setting')}}" data-original-title="Settings">
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
-            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-        </a>
-        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
-            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
         </a>
         <a data-toggle="tooltip" data-placement="top" title="" href="{{route('logout')}}" data-original-title="Logout">
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>

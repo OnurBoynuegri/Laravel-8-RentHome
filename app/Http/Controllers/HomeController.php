@@ -45,6 +45,7 @@ class HomeController extends Controller
     public function house($id, $slug)
     {
         $data = House::find($id);
+
         $datalist = Image::where('house_id', $id)->get();
         #print_r($data);
         #exit();
@@ -132,7 +133,7 @@ class HomeController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return redirect()->intended('admin');
+                return redirect()->intended('/');
             }
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.'

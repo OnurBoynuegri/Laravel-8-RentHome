@@ -4,7 +4,7 @@
 @endphp
 @section('title', $setting->title)
 @section('description')
-{{$setting->description}}
+    {{$setting->description}}
 @endsection
 @section('keywords', $setting->keywords)
 @section('headerjs')
@@ -14,7 +14,7 @@
     <div class="breadcrumbs">
         <ol class="breadcrumb">
             <li><a href="{{route('home')}}">Home</a></li>
-            <li class="active">User House Add </li>
+            <li class="active">User House Add</li>
         </ol>
     </div>
 @endsection
@@ -42,7 +42,8 @@
                                     <select class="form-control select2" name="category_id">
                                         @foreach($dataList as $rs)
 
-                                            <option value="{{$rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</option>
+                                            <option
+                                                value="{{$rs->id}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -52,7 +53,7 @@
                                 <label class="col-form-label col-md-3 col-sm-3 label-align"> Title
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" name="title" class="form-control">
+                                    <input type="text" name="title" required="required" class="form-control">
                                 </div>
                             </div>
 
@@ -71,7 +72,7 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">price</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="number" value="0" name="price">
+                                    <input class="form-control" type="number" value="0" required="required" name="price">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -119,19 +120,31 @@
                                     </script>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Slug</label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input class="form-control" type="text" name="slug">
+                                    <input class="form-control" type="text" required="required" name="slug">
                                 </div>
                             </div>
-
+                            @if($userData->contains('admin'))
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Status</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select class="form-control" name="status">
+                                            <option>False</option>
+                                            <option>True</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            @endif
                             <div class="form-group row">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Image</label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <input class="form-control" type="file" name="image" style="overflow: hidden;">
                                 </div>
                             </div>
+
                             <div class="ln_solid"></div>
                             <div class="form-group row">
                                 <div class="col-md-6 col-sm-6 offset-md-5">

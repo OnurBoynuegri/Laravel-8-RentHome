@@ -51,7 +51,12 @@
                                 <td>
                                     {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->category,$rs->category->title)}}
                                 </td>
-                                <td>{{$rs->title}}</td>
+                                <td>
+                                    <a href="{{route('house',['id'=>$rs->id,'slug'=>$rs->slug])}}"
+                                       onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">
+                                        {{$rs->title}}
+                                    </a>
+                                </td>
                                 <td>{{$rs->price}}</td>
                                 <td>
                                     @if($rs->image)
